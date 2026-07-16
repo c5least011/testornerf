@@ -31,7 +31,7 @@ local distanceBall = 0
 local dynamicDistance = 0
 
 local sliderValue = 100
-local minDistance = 15
+local minDistance = 20
 local lastParryFrame = 0
 local frameCount = 0
 
@@ -84,19 +84,19 @@ previousDistanceBall = distanceBall
 
 
               
-            dynamicDistance = gigachad_dynamic_math(currentBallSpeed)  
+            dynamicDistance = gigachad_dynamic_math(currentBallSpeed)  + currentBallSpeed / 95
             
             if currentBallSpeed <= 100 then
               mainDistance = minDistance + dynamicDistance
             else
-              mainDistance = (minDistance + dynamicDistance + (currentBallSpeed * 0.5) / 45) + 10
+              mainDistance = minDistance + dynamicDistance + currentBallSpeed / 80
             end
 
             local isRed = (Ball.Color == Color3.fromRGB(202, 56, 30))  
-            local condition = isRed and (currentBallSpeed > 0) and distanceBall <= mainDistance
+            local condition = isRed and distanceBall <= mainDistance
 
             
-            if condition and (currentBallSpeed <= 1567.3667691855) then  
+            if condition and (currentBallSpeed <= 1000) then  
                 if not justParry then  
                     justParry = true  
                     Parry_Instance:FireServer(buffer.fromstring("\001"))  
