@@ -1,14 +1,3 @@
-local Parry_Instance
-
-for _, t in next, getgc(true) do
-if type(t) == "table" then
-Parry_Instance = rawget(t, "did")
-if Parry_Instance then
-break
-end
-end
-end
-
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Builetuananh1/Allusive/refs/heads/main/Library.lua"))()
 
 local mainDistance = 0
@@ -19,6 +8,7 @@ local RunService = game:GetService("RunService")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local workspace = game:GetService("Workspace")
+local VirtualInputManager = game:GetService("VirtualInputManager")
 
 local Player = Players.LocalPlayer
 local Ball = workspace:WaitForChild("GameBall")
@@ -99,10 +89,12 @@ previousDistanceBall = distanceBall
             if condition and (currentBallSpeed <= 1000) then  
                 if not justParry then  
                     justParry = true  
-                    Parry_Instance:FireServer(buffer.fromstring("\001"))  
+                    VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, 1)  
+                    task.wait()  
+                    VirtualInputManager:SendMouseButtonEvent(0, 0, 0, false, game, 1)  
                       
                     print(string.format(  
-                        "[AutoParry] Fired | BallSpeed: %.2f | Distance: %.2f | Range: %.2f",  
+                        "[AutoParry] Fired via Click | BallSpeed: %.2f | Distance: %.2f | Range: %.2f",  
                         currentBallSpeed,  
                         distanceBall,  
                         mainDistance  
