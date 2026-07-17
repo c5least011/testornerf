@@ -21,7 +21,7 @@ local distanceBall = 0
 local dynamicDistance = 0
 
 local sliderValue = 100
-local minDistance = 20
+local minDistance = 15
 local lastParryFrame = 0
 local frameCount = 0
 
@@ -84,7 +84,7 @@ previousDistanceBall = distanceBall
             elseif currentBallSpeed <= 600 then
               mainDistance = (minDistance + dynamicDistance + (currentBallSpeed * 0.5) / 45) + 15
             else
-              mainDistance = (minDistance + dynamicDistance + (currentBallSpeed * 0.5) / 45) + 45
+              mainDistance = (minDistance + dynamicDistance + (currentBallSpeed * 0.5) / 45) + 25
            
        
             end
