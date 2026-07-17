@@ -21,7 +21,7 @@ local distanceBall = 0
 local dynamicDistance = 0
 
 local sliderValue = 100
-local minDistance = 20
+local minDistance = 15
 local lastParryFrame = 0
 local frameCount = 0
 
@@ -77,9 +77,9 @@ previousDistanceBall = distanceBall
             dynamicDistance = gigachad_dynamic_math(currentBallSpeed)  + currentBallSpeed / 95
             
             if currentBallSpeed <= 100 then
-              mainDistance = minDistance + dynamicDistance
+              mainDistance = minDistance + dynamicDistance 
             else
-              mainDistance = minDistance + dynamicDistance + currentBallSpeed / 80
+              mainDistance = minDistance + dynamicDistance + currentBallSpeed / 95
             end
 
             local isRed = (Ball.Color == Color3.fromRGB(202, 56, 30))  
